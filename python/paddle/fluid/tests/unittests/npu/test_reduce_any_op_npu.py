@@ -93,7 +93,7 @@ class TestAnyOpWithKeepDim(OpTest):
         self.op_type = "reduce_any"
         self.place = paddle.NPUPlace(0)
         self.inputs = {'X': np.random.randint(0, 2, (5, 6, 10)).astype("bool")}
-        self.attrs = {'dim': (1), 'keep_dim': True}
+        self.attrs = {'dim': (1,), 'keep_dim': True}
         self.outputs = {
             'Out':
             np.expand_dims(self.inputs['X'].any(axis=self.attrs['dim']), axis=1)
@@ -116,7 +116,7 @@ class TestAny8DOpWithKeepDim(OpTest):
             'X': np.random.randint(0, 2,
                                    (2, 5, 3, 2, 2, 3, 4, 2)).astype("bool")
         }
-        self.attrs = {'dim': (1), 'keep_dim': True}
+        self.attrs = {'dim': (1,), 'keep_dim': True}
         self.outputs = {
             'Out':
             np.expand_dims(self.inputs['X'].any(axis=self.attrs['dim']), axis=1)
